@@ -6,9 +6,8 @@ import (
 )
 
 func process(w http.ResponseWriter, r *http.Request) {
-	r.ParseMultipartForm(1024)
-	// http.Request.PostForm only allows forms data to be parsed, no URL queries
-	fmt.Fprintln(w, r.MultipartForm)
+	// you can also use r.PostFormValue which ignore the URL query
+	fmt.Fprintln(w, r.FormValue("name"))
 }
 
 func main() {
